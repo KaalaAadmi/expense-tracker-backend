@@ -47,3 +47,22 @@ export const getAllExpense = async (req, res) => {
     });
   }
 };
+
+export const deleteExpense = async (req, res) => {
+  try {
+    const userId = req.body.userId;
+    const expenseId = req.body.expenseId;
+    const deleteExpense = await Expense.findByIdAndDelete({
+      userId: userId,
+      _id: expenseId,
+    });
+    res.status(200).json({
+      message: "Expense deleted successfully.",
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      message: "An error occurred.",
+    });
+  }
+};
