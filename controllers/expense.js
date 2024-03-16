@@ -12,7 +12,8 @@ export const addExpense = async (req, res) => {
       expenseAmountCurrency: req.body.expenseAmountCurrency,
       otherDetails: req.body.otherDetails,
       userId: req.body.userId,
-      group: req.body.group,
+        group: req.body.group,
+      date:req.body.date,
     });
     const savedExpense = await newExpense.save();
     return res.status(201).json({
